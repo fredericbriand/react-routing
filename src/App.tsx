@@ -1,34 +1,19 @@
-import { useState } from "react";
+import { Link, Outlet } from "react-router";
+
 import "./App.css";
 
-// page components
-
-import Home from "./pages/Home";
-import About from "./pages/About";
-
-// the App
 function App() {
-    const [currentLocation, setCurrentLocation] = useState("/");
-
-    return (
-        <>
-            <nav>
-                <button onClick={() => setCurrentLocation("/")} type="button">
-                    Home
-                </button>
-                <button
-                    onClick={() => setCurrentLocation("/about")}
-                    type="button"
-                >
-                    About
-                </button>
-            </nav>
-            <main>
-                {currentLocation === "/" && <Home />}
-                {currentLocation === "/about" && <About />}
-            </main>
-        </>
-    );
+  return (
+    <>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+      </nav>
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
 }
 
 export default App;
